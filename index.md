@@ -37,9 +37,8 @@ For your second milestone, explain what you've worked on since your previous mil
 
 # First Milestone - Completed Hardware
 
-<!--**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>-->
+<!--**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**-->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vXvqL7_d3vs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 My project is an LED Strip that can be controlled remotely via Wifi. The main idea is that the LED will connect to the local Wifi network, and host an http site with controls for color of the lighting. So far, I've been able to complete all the wiring and get the LED strip to light up, controlled by code from the ESP32. When I first tried to control the LED strip through the ESP32, it ended up just flashing every light random colors. It turns out the ESP32 was not securely pushed into the breadboard, which wasn't apparent at the time. Now I'm going modify some code to work with the LED strips that I am using.
 
