@@ -52,7 +52,7 @@ My project is an LED Strip that can be controlled remotely via Wifi. The main id
 # Schematics 
 <!--Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. -->
 
-<img src="ESP32-LED-strip-schematic_f.png"/>
+<img src="5_e5d92954-ad59-40e6-a8c6-815b057eebb9.png"/>
 
 <!--
 # Code
