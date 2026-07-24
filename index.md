@@ -28,7 +28,8 @@ For your final milestone, explain the outcome of your project. Key details to in
 <!--**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+-->
+At Milestone 2, I've now modified code which was needed to allow changing the color remotely. The ESP32 now hosts an http server on the local network, which hosts the controls for changing the LED strips color. Surprisingly, the WiFi part of the code worked first try, and I was able to connect to the server and change the color. However, the color didn't change in the way I expected. It turns out that the LED strip takes the GRB encoding of colors, while the code was set to send the RGB encoding. This caused red to appear on the LED as green, and green to appear as red. I switched the encoding and it worked fine after. Next, I'm going to remake the code for the server since I don't like it's format, and then I will add more controls, like being able to cycle through colors.
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
