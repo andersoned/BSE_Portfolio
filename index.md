@@ -25,7 +25,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone - Working WiFi Color Server
 
-<iframe width="560" height="315" src="https://youtu.be/_Y7RiGL3Ee8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_Y7RiGL3Ee8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 At Milestone 2, I've now modified code which was needed to allow changing the color remotely. The ESP32 now hosts an http server on the local network, which hosts the controls for changing the LED strips color. Surprisingly, the WiFi part of the code worked first try, and I was able to connect to the server and change the color. However, the color didn't change in the way I expected. It turns out that the LED strip takes the GRB encoding of colors, while the code was set to send the RGB encoding. This caused red to appear on the LED as green, and green to appear as red. I switched the encoding and it worked fine after. Next, I'm going to remake the code for the server since I don't like it's format, and then I will add more controls, like being able to cycle through colors.
 
 # First Milestone - Completed Hardware
