@@ -1,5 +1,5 @@
 # Wifi-Controlled LED
-<!--Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!-->
+This project is an LED Strip that can be controlled from your own browser. The LED color can be customized to be any static color, or follow one of four preset modes which automatically customize the color over time.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -26,7 +26,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 # Second Milestone - Working WiFi Color Server
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_Y7RiGL3Ee8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-At Milestone 2, I've now modified code which was needed to allow changing the color remotely. The ESP32 now hosts an http server on the local network, which hosts the controls for changing the LED strips color. Surprisingly, the WiFi part of the code worked first try, and I was able to connect to the server and change the color. However, the color didn't change in the way I expected. It turns out that the LED strip takes the GRB encoding of colors, while the code was set to send the RGB encoding. This caused red to appear on the LED as green, and green to appear as red. I switched the encoding and it worked fine after. Next, I'm going to remake the code for the server since I don't like it's format, and then I will add more controls, like being able to cycle through colors.
+At Milestone 2, I've now modified code which was needed to allow changing the color remotely. The ESP32 now hosts an HTTP server on the local network, which hosts the controls for changing the LED strips color. Surprisingly, the WiFi part of the code worked first try, and I was able to connect to the server and change the color. However, the color didn't change in the way I expected. It turns out that the LED strip takes the GRB encoding of colors, while the code was set to send the RGB encoding. This caused red to appear on the LED as green, and green to appear as red. I switched the encoding and it worked fine after. Next, I'm going to remake the code for the server since I don't like it's format, and then I will add more controls, like being able to cycle through colors.
 
 # First Milestone - Completed Hardware
 
@@ -49,6 +49,7 @@ I modified existing code to work with the LED strip I used, and added additional
 #include <WiFi.h>
 #include <Adafruit_NeoPixel.h>
 #include <string>
+#include <vector>
 #define LED_PIN 5
 #define LED_COUNT 60
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ400);
@@ -86,6 +87,7 @@ const long timeoutTime = 2000;
 
 uint32_t colorH=0;
 float breath=0;
+int switchTime=0;
 
 // hsv to rgb is from ChatGPT
 // hsv is used for color cycling since its easier to change the color based on hue
@@ -196,7 +198,7 @@ void loop(){
               client.println("</head><body><div class=\"container\"><div class=\"row\"><h1>ESP Color Picker</h1></div>");
               client.println("<input class=\"btn btn-primary btn-lg\" href=\"#\" id=\"change_color\" type=\"button\" onclick=\"setRGB()\" value=\"Change Color\"></input> ");
               client.println("<input class=\"jscolor {onFineChange:'update(this)'}\" id=\"rgb\">");
-              client.println("<select name=\"modes\" id=\"modes\"><option value=\"static\">Static</option><option value=\"cycle\">Cycle</option><option value=\"breath\">Breath</option></select></div>");
+              client.println("<select name=\"modes\" id=\"modes\"><option value=\"static\">Static</option><option value=\"cycle\">Cycle</option><option value=\"breath\">Breath</option><option value=\"wave\">Wave</option><option value=\"switch\">Switch</option></select></div>");
               client.println("<script>var rgbvalue=\"?r255g255b255&\";\nfunction update(picker) {document.getElementById('rgb').innerHTML = Math.round(picker.rgb[0]) + ', ' +  Math.round(picker.rgb[1]) + ', ' + Math.round(picker.rgb[2]);");
               client.println("rgbvalue=\"?r\" + Math.round(picker.rgb[0]) + \"g\" +  Math.round(picker.rgb[1]) + \"b\" + Math.round(picker.rgb[2]) + \"&\";}\nfunction setRGB() {fetch(rgbvalue+\"mode=\"+modes.value+\";\", {method: \"POST\"});}</script></body></html>");
               // The HTTP response ends with another blank line
@@ -268,6 +270,27 @@ void loop(){
       breath=0;
     }
     fillStrip(strip.Color(0, 0, (std::sin(breath/150*3.14159265358979)+1)*100)); // as many digits of pi as i couuld remember
+  } else if (mode=="wave") {
+    colorH++;
+    if (colorH>=256*2) {
+      colorH=0;
+    }
+    for (int i = 0; i<LED_COUNT; i++) {
+      strip.setPixelColor(i, HSVtoRGB((colorH+i*4)/2, 255, 50));
+    }
+    strip.show();
+  } else if (mode=="switch") {
+    switchTime++;
+    if (switchTime>=100) {
+      switchTime=0;
+    }
+    bool current = switchTime>50;
+    for (int i = 0; i<LED_COUNT; i++) {
+      current=!current;
+      int color = current ? 0 : 127;
+      strip.setPixelColor(i, strip.Color(color, color, color));
+    }
+    strip.show();
   }
   delay(10);
 }
@@ -283,3 +306,7 @@ void loop(){
 | 3x 1k ohm resistors | Managing Current | $14.97 | <a href="https://www.aliexpress.us/item/2255801159200038.html"> Link </a> |
 | Jumper Wires | Connecting Components | $4.63 | <a href="https://www.banggood.com/Geekcreit-3-IN-1-120pcs-10cm-Male-To-Female-Female-To-Female-Male-To-Male-Jumper-Cable-For-p-1054670.html"> Link </a> |
 | Breadboard | Holding all the components | $2.47 | <a href="https://www.ebay.com/itm/382565420137"> Link </a> |
+
+# Resources
+<a href="https://randomnerdtutorials.com/esp32-esp8266-rgb-led-strip-web-server/"> https://randomnerdtutorials.com/esp32-esp8266-rgb-led-strip-web-server/ </a>
+<a href="https://www.sunfounder.com/blogs/news/esp32-with-ws2812b-neopixel-leds-complete-beginner-s-guide"> https://www.sunfounder.com/blogs/news/esp32-with-ws2812b-neopixel-leds-complete-beginner-s-guide </a>
