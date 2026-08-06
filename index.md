@@ -309,4 +309,5 @@ void loop(){
 
 # Resources
 <a href="https://randomnerdtutorials.com/esp32-esp8266-rgb-led-strip-web-server/"> https://randomnerdtutorials.com/esp32-esp8266-rgb-led-strip-web-server/ </a>
+
 <a href="https://www.sunfounder.com/blogs/news/esp32-with-ws2812b-neopixel-leds-complete-beginner-s-guide"> https://www.sunfounder.com/blogs/news/esp32-with-ws2812b-neopixel-leds-complete-beginner-s-guide </a>
