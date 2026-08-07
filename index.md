@@ -5,15 +5,11 @@ This project is an LED Strip that can be controlled from your own browser. The L
 |:--:|:--:|:--:|:--:|
 | Anderson E | EHS | Computer Science/Cybersecurity | Incoming Senior
 
-<!-- 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
-![Headstone Image](logo.svg)
--->
+<img src="Screenshot from 2026-08-07 12-34-25.png"/>
   
 # Final Milestone - Add Automatic Modes to Code
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EOxmQoZJnlc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Since my previous milestone, I've added a dropdown to the website which contains multiple preset animations for the LED strip. Overall, the most difficult challenge I faced was when my LED strip didn't turn on after a pin had loosened and didn't provide and electricity. My biggest triumph was when I was able to make my hardware turn on and fully work. I learned about voltage, current, the ESP32, Arduino C++, and how an LED strip works. I hope to learn more about hardware in the future after Bluestamp.
 
