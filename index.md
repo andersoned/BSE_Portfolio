@@ -13,15 +13,9 @@ This project is an LED Strip that can be controlled from your own browser. The L
   
 # Final Milestone - Add Automatic Modes to Code
 
-<!--**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE-->
+Since my previous milestone, I've added a dropdown to the website which contains multiple preset animations for the LED strip. Overall, the most difficult challenge I faced was when my LED strip didn't turn on after a pin had loosened and didn't provide and electricity. My biggest triumph was when I was able to make my hardware turn on and fully work. I learned about voltage, current, the ESP32, Arduino C++, and how an LED strip works. I hope to learn more about hardware in the future after Bluestamp.
 
 # Second Milestone - Working WiFi Color Server
 
@@ -34,10 +28,10 @@ At Milestone 2, I've now modified code which was needed to allow changing the co
 
 My project is an LED Strip that can be controlled remotely via Wifi. The main idea is that the LED will connect to the local Wifi network, and host an http site with controls for color of the lighting. So far, I've been able to complete all the wiring and get the LED strip to light up, controlled by code from the ESP32. When I first tried to control the LED strip through the ESP32, it ended up just flashing every light random colors. It turns out the ESP32 was not securely pushed into the breadboard, which wasn't apparent at the time. Now I'm going modify some code to work with the LED strips that I am using.
 
-# Schematics 
+# Schematic
 <img src="5_e5d92954-ad59-40e6-a8c6-815b057eebb9.png"/>
 
-
+# Code
 I modified existing code to work with the LED strip I used, and added additional features.
 ```cpp
 /*********
